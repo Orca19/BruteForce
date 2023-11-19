@@ -18,7 +18,6 @@ def BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST):
             list[i] = start_phrase[0]
             i-=1   
         list[i] = chr(ord(list[i])+1)
-    """
     if ''.join(list)==stop_phrase:
         print("password wasn't found")
 
