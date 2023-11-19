@@ -11,13 +11,14 @@ def BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST):
         passwords_LIST[0].append(password)
         passwords_LIST[1].append(password_md5)
         if  ''.join(list)==stop_phrase:
-            return 'password is not found'
+            return 'password was not found'
             
         i = -1
         while list[i]==stop_phrase[0]:
             list[i] = start_phrase[0]
             i-=1   
         list[i] = chr(ord(list[i])+1)
+    """
     if ''.join(list)==stop_phrase:
         print("password wasn't found")
 
@@ -27,6 +28,7 @@ def BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST):
     password_tab['MD5'] = passwords_LIST[1]
     df = pd.DataFrame.from_dict(password_tab)
     print(df)
+    """
 
 def main():
     """
