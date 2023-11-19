@@ -27,7 +27,10 @@ while True:
     answer+=password
     soc.send(answer.encode('utf-8'))
     answer  = soc.recv(1024).decode('utf-8')
+    if answer!='ok':
+        break
     soc.send('next'.encode('utf-8'))
+soc.close()
 
 
 
