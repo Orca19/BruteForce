@@ -7,11 +7,12 @@ def BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST):
         password = ''.join(list)
         password_md5 = hashlib.md5(password.encode('UTF-8')).hexdigest()
         if password_md5==MD5:
-            print("Your password is",password)
+            return password
         passwords_LIST[0].append(password)
         passwords_LIST[1].append(password_md5)
         if  ''.join(list)==stop_phrase:
-            break
+            return 'password is not found'
+            
         i = -1
         while list[i]==stop_phrase[0]:
             list[i] = start_phrase[0]
@@ -28,7 +29,7 @@ def BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST):
     print(df)
 
 def main():
-
+    """
     import threading
     passwords_LIST =[[],[]]
     start_phrase = input("Enter start phrase ")
@@ -36,6 +37,7 @@ def main():
     MD5 = input("Enter MD5 ")
     list = [chr for chr in start_phrase]
     BruteForce(start_phrase, stop_phrase, list, MD5, passwords_LIST)
+    """
     """
     dif = ord(stop_phrase[0])-ord(start_phrase[0])
     if dif<=50:
