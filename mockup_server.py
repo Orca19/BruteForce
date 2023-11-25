@@ -16,11 +16,13 @@ if mes=='amogus':
         data = 'start:aaa,stop:zzz,MD5:'+MD5
         s.send(data.encode())
         mes = s.recv(1024).decode()
+
         if mes=='ok':
             print("recieved ok")
             mes = s.recv(1024).decode()
             s.send(("got password "+mes).encode())
             time.sleep(5)
+            
 
 ser_soc.close()
 

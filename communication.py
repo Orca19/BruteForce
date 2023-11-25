@@ -5,16 +5,18 @@ import threading
 
 
 def blocking(soc, end):
-    answer1  = soc.recv(1024).decode('utf-8')
-    if answer1=='end':
-        end = True
+    while end:
+        answer1  = soc.recv(1024).decode('utf-8')
+        if answer1=='end':
+            end = True
         
 def com(soc, end):
     while not end:
         answer  = soc.recv(1024).decode()
         if answer[:6]=='start:':
             time.sleep(0.1)
-            soc.send('ok'.encode('utf-8'))
+            soc.send('ok'.encode())
+            time.sleep(1)
             print("got data")
             inputs = answer.split(',')
             start = inputs[0][6:]
