@@ -5,10 +5,13 @@ import threading
 
 
 def blocking(soc, end):
-    while end:
+    """
+    while not end:
         answer1  = soc.recv(1024).decode('utf-8')
         if answer1=='end':
             end = True
+    """
+    pass
         
 def com(soc, end):
     while not end:
@@ -17,7 +20,7 @@ def com(soc, end):
             time.sleep(0.1)
             soc.send('ok'.encode())
             time.sleep(1)
-            print("got data")
+            print("got data from server")
             inputs = answer.split(',')
             start = inputs[0][6:]
             stop = inputs[1][5:]
@@ -31,10 +34,10 @@ def com(soc, end):
             answer+=password
             print(password)
             soc.send(answer.encode('utf-8'))
-            print("password was sent")
+            print("password was sent to server")
             time.sleep(0.1)
             answer  = soc.recv(1024).decode('utf-8')
-            print(answer)
+            print("message from server: "+answer)
             if answer!='ok':
                 break
             soc.send('next'.encode('utf-8'))
